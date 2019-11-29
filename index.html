@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>SÁCH MIẾN PHÍ CHO BẠN</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+      shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase.js"></script>
+    <!-- Bulma css -->
+    <link rel="stylesheet" href="./css/bulma.css">
+    <script>
+        // Initialize Firebase
+        
+                const firebaseConfig = {
+            apiKey: "AIzaSyANU92M9hFovL1InevE0S5xazPAaoYZJ4E",
+            authDomain: "chiasekhoahoc.firebaseapp.com",
+            databaseURL: "https://chiasekhoahoc.firebaseio.com",
+            projectId: "chiasekhoahoc",
+            storageBucket: "chiasekhoahoc.appspot.com",
+            messagingSenderId: "71566019198",
+            appId: "1:71566019198:web:80021cafcd68f12c86e62f",
+            measurementId: "G-XPH1NZ002W"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        var databaseRef = firebase.database().ref('khoahoc/');
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        </script>
+    <script>
+        var tblUsers = document.getElementById('tbl_users_list');
+       var databaseRef = firebase.database().ref('khoahoc/');
+       var rowIndex = 1;
+       databaseRef.once('value', function(snapshot) {
+           let content = "";
+           snapshot.forEach(function(childSnapshot) { content += `
+                 <tr>
+                     <td>${childSnapshot.val().khoahoc}</td>
+                     <td>${childSnapshot.val().noidung}</td>
+                     <td><a href="${childSnapshot.val().link}"><button class="btn btn-danger">TẢI VỀ</button></a></td>
+   
+                      
+                 </tr>
+         
+             `;
+    });
+    document.getElementById("tblDanhSachSanPham").innerHTML = content;
+
+     
+       });
+
+       </script>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">MIẾN PHÍ DOWNLOAD EBOOK RIP TỪ AMAZON</h1>
+        <h2 class="subtitle">
+          Phi lợi nhuận cũng<strong> mong bạn sẽ thích</strong>, luôn miễn phí ~
+          🙃
+        </h2>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-5 has-background-warning">
+          <h3 class="mt-3 label text-center">✍️ Thêm Xóa Sửa Cập Nhật ✍️</h3>
+          <div class="infothem">
+            <label class="label">Tên Sách</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Nhập nội dung"
+                id=tenSach>
+            </div>
+            <label class="label">Nội dung sách</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Nhập nội dung"
+                id="noiDungSach">
+            </div>
+            <label class="label">Up load file sách</label>
+
+            <div class="input-field col s12">
+              <input type="file" id="upload" class="" id="linkSach">
+            </div>
+            <div class="trangthai">
+              <label class="label">Đang upload</label>
+
+              <progress id="progressBar" value="0"
+                max="100"
+                style="width:100%;"></progress>
+            </div>
+            <div class="them">
+              <label class="label">Chức năng</label>
+
+              <div class="buttons py-3">
+
+                <button class="button is-info" id="themMoi">Thêm mới</button>
+                <button class="button is-success">Sửa File</button>
+                <button class="button is-danger">Xóa File</button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-md-7">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>TÊN SÁCH</th>
+                <th>NỘI DUNG SÁCH</th>
+                <th>LINK TẢI </th>
+
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tblDanhSachSanPham">
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+  </body>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+
+</html>
